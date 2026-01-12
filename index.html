@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Input Wizard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wizard">
+    <header class="wizard__header">
+      <h1>Request Wizard</h1>
+      <p>Choose a mode, provide inputs, and review parsed values with provenance.</p>
+    </header>
+
+    <section class="wizard__step" data-step="1">
+      <h2>1. Select a mode</h2>
+      <div class="mode-grid">
+        <button class="mode-card" data-mode="natural">
+          <span>Natural language</span>
+          <small>Describe the request conversationally.</small>
+        </button>
+        <button class="mode-card" data-mode="structured">
+          <span>Structured</span>
+          <small>Fill in each field directly.</small>
+        </button>
+        <button class="mode-card" data-mode="research">
+          <span>Research-assisted</span>
+          <small>Blend user input with public sources.</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="wizard__step" data-step="2">
+      <h2>2. Provide details</h2>
+      <div class="panel" id="mode-natural">
+        <label for="nl-input">Describe the request</label>
+        <textarea id="nl-input" rows="5" placeholder="e.g. Build a Q4 launch plan with a $40k budget and deliver by October 15."></textarea>
+        <button class="primary" id="parse-nl">Parse input</button>
+      </div>
+      <div class="panel" id="mode-structured" hidden>
+        <div class="field-grid">
+          <label>
+            Project name
+            <input type="text" data-field="projectName" placeholder="Launch plan" />
+          </label>
+          <label>
+            Goal
+            <input type="text" data-field="goal" placeholder="Prepare go-to-market strategy" />
+          </label>
+          <label>
+            Timeline
+            <input type="text" data-field="timeline" placeholder="October 15" />
+          </label>
+          <label>
+            Budget
+            <input type="text" data-field="budget" placeholder="$40k" />
+          </label>
+        </div>
+      </div>
+      <div class="panel" id="mode-research" hidden>
+        <p>Provide a short brief and we'll combine it with public data sources.</p>
+        <label for="research-input">Research brief</label>
+        <textarea id="research-input" rows="4" placeholder="We need a regional pricing snapshot for Q4."></textarea>
+      </div>
+    </section>
+
+    <section class="wizard__step" data-step="3">
+      <h2>3. Review &amp; confirm</h2>
+      <div class="review-table" id="review-table"></div>
+      <button class="secondary" id="save-review">Save review</button>
+    </section>
+
+    <section class="wizard__step" data-step="4">
+      <h2>4. Output</h2>
+      <pre id="output"></pre>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
