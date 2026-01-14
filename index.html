@@ -3,76 +3,147 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Input Wizard</title>
+  <title>Real Estate Model Builder</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="wizard">
-    <header class="wizard__header">
-      <h1>Request Wizard</h1>
-      <p>Choose a mode, provide inputs, and review parsed values with provenance.</p>
+  <main class="builder">
+    <header class="builder__header">
+      <h1>Real Estate Model Builder</h1>
+      <p>Enter assumptions, run the model, and export the results.</p>
     </header>
 
-    <section class="wizard__step" data-step="1">
-      <h2>1. Select a mode</h2>
-      <div class="mode-grid">
-        <button class="mode-card" data-mode="natural">
-          <span>Natural language</span>
-          <small>Describe the request conversationally.</small>
-        </button>
-        <button class="mode-card" data-mode="structured">
-          <span>Structured</span>
-          <small>Fill in each field directly.</small>
-        </button>
-        <button class="mode-card" data-mode="research">
-          <span>Research-assisted</span>
-          <small>Blend user input with public sources.</small>
-        </button>
-      </div>
-    </section>
-
-    <section class="wizard__step" data-step="2">
-      <h2>2. Provide details</h2>
-      <div class="panel" id="mode-natural">
-        <label for="nl-input">Describe the request</label>
-        <textarea id="nl-input" rows="5" placeholder="e.g. Build a Q4 launch plan with a $40k budget and deliver by October 15."></textarea>
-        <button class="primary" id="parse-nl">Parse input</button>
-      </div>
-      <div class="panel" id="mode-structured" hidden>
-        <div class="field-grid">
-          <label>
-            Project name
-            <input type="text" data-field="projectName" placeholder="Launch plan" />
-          </label>
-          <label>
-            Goal
-            <input type="text" data-field="goal" placeholder="Prepare go-to-market strategy" />
-          </label>
-          <label>
-            Timeline
-            <input type="text" data-field="timeline" placeholder="October 15" />
-          </label>
-          <label>
-            Budget
-            <input type="text" data-field="budget" placeholder="$40k" />
-          </label>
+    <section class="builder__panel">
+      <form id="assumptions-form">
+        <div class="section">
+          <h2>Time Horizon</h2>
+          <div class="field-grid">
+            <label>
+              Hold years
+              <input type="number" name="hold_years" min="1" step="1" value="5" required />
+            </label>
+          </div>
         </div>
-      </div>
-      <div class="panel" id="mode-research" hidden>
-        <p>Provide a short brief and we'll combine it with public data sources.</p>
-        <label for="research-input">Research brief</label>
-        <textarea id="research-input" rows="4" placeholder="We need a regional pricing snapshot for Q4."></textarea>
-      </div>
+
+        <div class="section">
+          <h2>Acquisition & Revenue</h2>
+          <div class="field-grid">
+            <label>
+              Purchase price
+              <input type="number" name="purchase_price" min="0" step="1000" value="10000000" required />
+            </label>
+            <label>
+              Annual rent
+              <input type="number" name="rent" min="0" step="1000" value="1200000" required />
+            </label>
+            <label>
+              Other income
+              <input type="number" name="other_income" min="0" step="100" value="50000" required />
+            </label>
+            <label>
+              Rent growth
+              <input type="number" name="rent_growth" min="-1" max="1" step="0.001" value="0.03" required />
+            </label>
+            <label>
+              Vacancy rate
+              <input type="number" name="vacancy_rate" min="0" max="1" step="0.001" value="0.05" required />
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Operating Expenses</h2>
+          <div class="field-grid">
+            <label>
+              Operating expenses
+              <input type="number" name="operating_expenses" min="0" step="1000" value="450000" required />
+            </label>
+            <label>
+              Expense growth
+              <input type="number" name="expense_growth" min="-1" max="1" step="0.001" value="0.025" required />
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Capital & Working Capital</h2>
+          <div class="field-grid">
+            <label>
+              Capex % of revenue
+              <input type="number" name="capex_percent_revenue" min="0" max="1" step="0.001" value="0.02" required />
+            </label>
+            <label>
+              Working capital % of revenue
+              <input type="number" name="working_capital_percent_revenue" min="0" max="1" step="0.001" value="0.01" required />
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Debt</h2>
+          <div class="field-grid">
+            <label>
+              Loan-to-value
+              <input type="number" name="debt_ltv" min="0" max="1" step="0.001" value="0.7" required />
+            </label>
+            <label>
+              Interest rate
+              <input type="number" name="debt_interest_rate" min="0" max="1" step="0.001" value="0.055" required />
+            </label>
+            <label>
+              Amortization years
+              <input type="number" name="debt_amort_years" min="1" step="1" value="30" required />
+            </label>
+            <label>
+              Term years
+              <input type="number" name="debt_term_years" min="1" step="1" value="5" required />
+            </label>
+            <label>
+              Interest-only years
+              <input type="number" name="debt_interest_only_years" min="0" step="1" value="0" required />
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Exit & Valuation</h2>
+          <div class="field-grid">
+            <label>
+              Exit cap rate
+              <input type="number" name="exit_cap_rate" min="0" max="1" step="0.001" value="0.055" required />
+            </label>
+            <label>
+              Sales cost %
+              <input type="number" name="sales_cost_percent" min="0" max="1" step="0.001" value="0.02" required />
+            </label>
+            <label>
+              Discount rate
+              <input type="number" name="discount_rate" min="0" max="1" step="0.001" value="0.1" required />
+            </label>
+            <label>
+              Balance sheet valuation
+              <select name="balance_sheet_valuation">
+                <option value="market" selected>Market</option>
+                <option value="cost">Cost</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="primary">Run model</button>
+          <button type="button" class="secondary" id="export-json" disabled>Export JSON</button>
+        </div>
+      </form>
     </section>
 
-    <section class="wizard__step" data-step="3">
-      <h2>3. Review &amp; confirm</h2>
-      <div class="review-table" id="review-table"></div>
-      <button class="secondary" id="save-review">Save review</button>
+    <section class="builder__panel">
+      <h2>Key Outputs</h2>
+      <div class="kpi-grid" id="kpi-grid"></div>
     </section>
 
-    <section class="wizard__step" data-step="4">
-      <h2>4. Output</h2>
+    <section class="builder__panel">
+      <h2>Full Model Output (JSON)</h2>
       <pre id="output"></pre>
     </section>
   </main>
