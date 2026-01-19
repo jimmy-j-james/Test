@@ -19,7 +19,8 @@
           <h2>Time Horizon</h2>
           <div class="field-grid">
             <label>
-              Hold years
+              <span class="field-label">Hold years <span class="field-unit">(years)</span></span>
+              <span class="field-help">Length of the investment hold period.</span>
               <input type="number" name="hold_years" min="1" step="1" value="5" required />
             </label>
           </div>
@@ -29,23 +30,28 @@
           <h2>Acquisition & Revenue</h2>
           <div class="field-grid">
             <label>
-              Purchase price
+              <span class="field-label">Purchase price <span class="field-unit">(USD)</span></span>
+              <span class="field-help">Total acquisition price paid at closing.</span>
               <input type="number" name="purchase_price" min="0" step="1000" value="10000000" required />
             </label>
             <label>
-              Annual rent
+              <span class="field-label">Annual rent <span class="field-unit">(USD/year)</span></span>
+              <span class="field-help">Gross scheduled rent in year one.</span>
               <input type="number" name="rent" min="0" step="1000" value="1200000" required />
             </label>
             <label>
-              Other income
+              <span class="field-label">Other income <span class="field-unit">(USD/year)</span></span>
+              <span class="field-help">Ancillary income before vacancy.</span>
               <input type="number" name="other_income" min="0" step="100" value="50000" required />
             </label>
             <label>
-              Rent growth
+              <span class="field-label">Rent growth <span class="field-unit">(annual %)</span></span>
+              <span class="field-help">Year-over-year growth applied to rent.</span>
               <input type="number" name="rent_growth" min="-1" max="1" step="0.001" value="0.03" required />
             </label>
             <label>
-              Vacancy rate
+              <span class="field-label">Vacancy rate <span class="field-unit">(% of potential rent)</span></span>
+              <span class="field-help">Portion of rent lost to vacancy.</span>
               <input type="number" name="vacancy_rate" min="0" max="1" step="0.001" value="0.05" required />
             </label>
           </div>
@@ -55,11 +61,13 @@
           <h2>Operating Expenses</h2>
           <div class="field-grid">
             <label>
-              Operating expenses
+              <span class="field-label">Operating expenses <span class="field-unit">(USD/year)</span></span>
+              <span class="field-help">Year-one recurring operating costs.</span>
               <input type="number" name="operating_expenses" min="0" step="1000" value="450000" required />
             </label>
             <label>
-              Expense growth
+              <span class="field-label">Expense growth <span class="field-unit">(annual %)</span></span>
+              <span class="field-help">Year-over-year growth applied to expenses.</span>
               <input type="number" name="expense_growth" min="-1" max="1" step="0.001" value="0.025" required />
             </label>
           </div>
@@ -69,11 +77,13 @@
           <h2>Capital & Working Capital</h2>
           <div class="field-grid">
             <label>
-              Capex % of revenue
+              <span class="field-label">Capex % of revenue <span class="field-unit">(% of revenue)</span></span>
+              <span class="field-help">Capital reserves as a share of revenue.</span>
               <input type="number" name="capex_percent_revenue" min="0" max="1" step="0.001" value="0.02" required />
             </label>
             <label>
-              Working capital % of revenue
+              <span class="field-label">Working capital % of revenue <span class="field-unit">(% of revenue)</span></span>
+              <span class="field-help">Change in working capital as a share of revenue.</span>
               <input type="number" name="working_capital_percent_revenue" min="0" max="1" step="0.001" value="0.01" required />
             </label>
           </div>
@@ -83,23 +93,28 @@
           <h2>Debt</h2>
           <div class="field-grid">
             <label>
-              Loan-to-value
+              <span class="field-label">Loan-to-value <span class="field-unit">(% of purchase price)</span></span>
+              <span class="field-help">Debt proceeds divided by purchase price.</span>
               <input type="number" name="debt_ltv" min="0" max="1" step="0.001" value="0.7" required />
             </label>
             <label>
-              Interest rate
+              <span class="field-label">Interest rate <span class="field-unit">(annual %)</span></span>
+              <span class="field-help">Nominal interest rate on outstanding debt.</span>
               <input type="number" name="debt_interest_rate" min="0" max="1" step="0.001" value="0.055" required />
             </label>
             <label>
-              Amortization years
+              <span class="field-label">Amortization years <span class="field-unit">(years)</span></span>
+              <span class="field-help">Length of the amortization schedule.</span>
               <input type="number" name="debt_amort_years" min="1" step="1" value="30" required />
             </label>
             <label>
-              Term years
+              <span class="field-label">Term years <span class="field-unit">(years)</span></span>
+              <span class="field-help">Loan maturity before refinancing or payoff.</span>
               <input type="number" name="debt_term_years" min="1" step="1" value="5" required />
             </label>
             <label>
-              Interest-only years
+              <span class="field-label">Interest-only years <span class="field-unit">(years)</span></span>
+              <span class="field-help">Initial years with interest-only payments.</span>
               <input type="number" name="debt_interest_only_years" min="0" step="1" value="0" required />
             </label>
           </div>
@@ -109,19 +124,23 @@
           <h2>Exit & Valuation</h2>
           <div class="field-grid">
             <label>
-              Exit cap rate
+              <span class="field-label">Exit cap rate <span class="field-unit">(cap rate %)</span></span>
+              <span class="field-help">Terminal cap rate applied to NOI at sale.</span>
               <input type="number" name="exit_cap_rate" min="0" max="1" step="0.001" value="0.055" required />
             </label>
             <label>
-              Sales cost %
+              <span class="field-label">Sales cost % <span class="field-unit">(% of sale price)</span></span>
+              <span class="field-help">Transaction costs deducted from sale proceeds.</span>
               <input type="number" name="sales_cost_percent" min="0" max="1" step="0.001" value="0.02" required />
             </label>
             <label>
-              Discount rate
+              <span class="field-label">Discount rate <span class="field-unit">(annual %)</span></span>
+              <span class="field-help">Rate used to discount cash flows for NPV.</span>
               <input type="number" name="discount_rate" min="0" max="1" step="0.001" value="0.1" required />
             </label>
             <label>
-              Balance sheet valuation
+              <span class="field-label">Balance sheet valuation <span class="field-unit">(basis)</span></span>
+              <span class="field-help">Method for valuing the balance sheet at exit.</span>
               <select name="balance_sheet_valuation">
                 <option value="market" selected>Market</option>
                 <option value="cost">Cost</option>

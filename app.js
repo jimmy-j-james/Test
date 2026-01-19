@@ -26,10 +26,30 @@ const formatPercent = (value) => {
 const renderKpis = (kpis) => {
   kpiGrid.innerHTML = "";
   const cards = [
-    { label: "IRR", value: formatPercent(kpis.irr) },
-    { label: "MOIC", value: kpis.moic?.toFixed(2) ?? "-" },
-    { label: "DSCR", value: kpis.dscr?.toFixed(2) ?? "-" },
-    { label: "NPV", value: formatCurrency(kpis.npv) },
+    {
+      label: "IRR",
+      subtitle: "Internal rate of return",
+      formula: "Discount rate that sets NPV of all cash flows to zero.",
+      value: formatPercent(kpis.irr),
+    },
+    {
+      label: "MOIC",
+      subtitle: "Multiple on invested capital",
+      formula: "Total distributions divided by total equity invested.",
+      value: kpis.moic?.toFixed(2) ?? "-",
+    },
+    {
+      label: "DSCR",
+      subtitle: "Debt service coverage ratio",
+      formula: "Net operating income divided by total debt service.",
+      value: kpis.dscr?.toFixed(2) ?? "-",
+    },
+    {
+      label: "NPV",
+      subtitle: "Net present value",
+      formula: "Sum of discounted cash flows at the discount rate.",
+      value: formatCurrency(kpis.npv),
+    },
   ];
 
   cards.forEach((card) => {
@@ -39,12 +59,18 @@ const renderKpis = (kpis) => {
     const label = document.createElement("span");
     label.className = "kpi-label";
     label.textContent = card.label;
+    label.title = card.formula;
+
+    const subtitle = document.createElement("span");
+    subtitle.className = "kpi-subtitle";
+    subtitle.textContent = card.subtitle;
+    subtitle.title = card.formula;
 
     const value = document.createElement("span");
     value.className = "kpi-value";
     value.textContent = card.value;
 
-    item.append(label, value);
+    item.append(label, subtitle, value);
     kpiGrid.append(item);
   });
 };

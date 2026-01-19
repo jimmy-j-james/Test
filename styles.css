@@ -53,6 +53,24 @@ label {
   color: #1f2937;
 }
 
+.field-label {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.field-unit {
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.field-help {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
 input,
 select {
   width: 100%;
@@ -111,6 +129,11 @@ select {
   color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.kpi-subtitle {
+  font-size: 0.8rem;
+  color: #94a3b8;
 }
 
 .kpi-value {
