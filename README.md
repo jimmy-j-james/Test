@@ -22,27 +22,16 @@ If you already have the project:
 
 ### 2) Open a terminal in the project folder
 
-- **Mac:** Open Terminal, then run:
-  ```bash
-  cd /path/to/your/Test
-  ```
 - **Windows (PowerShell):**
   ```powershell
   cd C:\path\to\your\Test
   ```
-- **Linux:**
-  ```bash
-  cd /path/to/your/Test
-  ```
+
 
 ### 3) Create a virtual environment (recommended)
 
 This keeps the project’s Python packages isolated.
 
-- **Mac/Linux:**
-  ```bash
-  python3 -m venv .venv
-  ```
 - **Windows (PowerShell):**
   ```powershell
   python -m venv .venv
@@ -50,10 +39,6 @@ This keeps the project’s Python packages isolated.
 
 ### 4) Activate the virtual environment
 
-- **Mac/Linux:**
-  ```bash
-  source .venv/bin/activate
-  ```
 - **Windows (PowerShell):**
   ```powershell
   .venv\Scripts\Activate.ps1
@@ -67,10 +52,6 @@ Then try the activate command again.
 
 ### 5) Install the Python dependencies
 
-- **Mac/Linux:**
-  ```bash
-  pip install -r requirements.txt
-  ```
 - **Windows (PowerShell):**
   ```powershell
   pip install -r requirements.txt
@@ -78,10 +59,6 @@ Then try the activate command again.
 
 ### 6) Start the server
 
-- **Mac/Linux:**
-  ```bash
-  python server.py
-  ```
 - **Windows (PowerShell):**
   ```powershell
   python server.py
